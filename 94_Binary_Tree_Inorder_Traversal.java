@@ -22,9 +22,9 @@ class Solution {
                 stack.push(root);
                 root = root.left;
             }
-            TreeNode t = stack.pop();
-            result.add(t.val);
-            root = t.right;
+            root = stack.pop();
+            result.add(root.val);
+            root = root.right;
             
         }
         return result;
