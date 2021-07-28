@@ -45,6 +45,27 @@ class Solution {
 }
 
 
+//Using tree Inorder Traversal
+
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+        while(root!=null||!stack.isEmpty()){
+            while(root!=null){
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            k = k-1;
+            if(k==0){
+                return root.val;
+            }
+            root = root.right;
+        }
+        return -1;
+    }
+}
+
 
 /**
 Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
