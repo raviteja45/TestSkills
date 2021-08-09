@@ -1,4 +1,4 @@
-package com.att.idp.catalog.wireless.controller;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,12 +15,9 @@ import java.util.stream.Stream;
 
 import org.springframework.util.StopWatch;
 
-import com.att.idp.catalog.wireless.model.DeviceListContext;
-import com.att.idp.catalog.wireless.model.stub.response.DeviceDetailsResponseContent;
-
 public class ConcurrentCall {
 	
-	public void makeParallelCall(DeviceListContext deviceListContext) {
+	public void makeParallelCall() {
 		ParallelCallOne one = new ParallelCallOne();
 		ParallelCallTwo two = new ParallelCallTwo();
 		List<Callable<Object>> list = new ArrayList<>();
@@ -104,7 +101,7 @@ public class ConcurrentCall {
 			e.printStackTrace();
 		}
 		
-		CompletableFuture<DeviceDetailsResponseContent> completeOther = CompletableFuture.supplyAsync(()->one.getOneMethod());
+		CompletableFuture<DeviceDetailsResponse> completeOther = CompletableFuture.supplyAsync(()->one.getOneMethod());
 		completeOther.thenApply(temp->{
 			Map<String, String> map = new HashMap<>();
 			map.put("Hello", "World");
@@ -112,7 +109,7 @@ public class ConcurrentCall {
 			return temp;
 		});
 		try {
-			System.out.println(completeOther.get().getPerformanceLogMap()); //Hello=World
+			System.out.println(completeOther.get().getPerformance()); //Hello=World
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
