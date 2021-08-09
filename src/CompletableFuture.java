@@ -28,7 +28,7 @@ public class ConcurrentCall {
 		StopWatch st1 = new StopWatch();
 		st1.start("Sequential");
 		one.getOneMethod();
-	    one.getOneMethod();
+	        one.getOneMethod();
 		one.getOneMethod();
 		one.getOneMethod();
 		st1.stop();
