@@ -26,6 +26,30 @@ class Solution {
     }
 }
 
+//V2
+
+class Solution {
+    public String longestPalindrome(String str) {
+        String res = null;
+        for(int i=0;i<str.length();i++){
+            res = findPalindrome(i,i,str,res);
+            res = findPalindrome(i,i+1,str,res);
+        }
+        return res;
+    }
+    public String findPalindrome(int low,int high,String str,String res){
+        while(low>=0&&high<str.length()&&str.charAt(low)==str.charAt(high)){
+            low--;
+            high++;
+        }
+        String temp = str.substring(low+1,high);
+        if(res==null)
+            return temp;
+        else
+            return temp.length()>res.length()?temp:res;
+    }
+}
+
 /**
 Given a string s, return the longest palindromic substring in s.
 
