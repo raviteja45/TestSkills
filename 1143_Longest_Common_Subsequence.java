@@ -12,6 +12,30 @@ class Solution {
                 }
             }
         }
+        //To print the string
+        int index = dp[len1][len2];
+        int temp = index;
+        StringBuilder b = new StringBuilder();
+        char[] str = new char[index+1];
+        int i=len1;
+        int j=len2;
+        while(i>0&&j>0){
+            if(text1.charAt(i-1)==text2.charAt(j-1)){
+                str[index-1] = text1.charAt(i-1);
+                i--;
+                j--;
+                index--;
+            }else if(dp[i-1][j]>dp[i][j-1]){
+                i--;
+            }else{
+                j--;
+            }
+        }
+        for(int k=0;k<temp;k++){
+            b.append(String.valueOf(str[k]));
+        }
+        System.out.println(b);
+        //end
         return dp[len1][len2];
     }
 }
