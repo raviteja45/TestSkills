@@ -31,6 +31,37 @@ class Solution {
     }
 }
 
+//V2 - Takes more time
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        Set<List<Integer>> res1 = new HashSet<>();
+        for(int i=0;i<nums.length-2;i++){
+            int low = i+1;
+            int high = nums.length-1;
+            while(low<high){
+                int sum = nums[i]+nums[low]+nums[high];
+                if(sum==0){
+                    List<Integer> li = Arrays.asList(nums[i],nums[low],nums[high]);
+                    res1.add(li);
+                    low++;
+                    high--;
+                }
+                else if(sum<0){
+                    low++;
+                }else{
+                    high--;
+                }
+            }
+        }
+        List<List<Integer>> k = new ArrayList<>();
+        k.addAll(res1);
+        return k;
+    }
+}
+
 
 /**
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
