@@ -50,6 +50,30 @@ class Solution {
     }
 }
 
+//V3
+
+class Solution {
+    public String longestPalindrome(String s) {
+        String x="";
+       for(int i=0;i<s.length();i++){
+           x = findPalindrome(s,i,i,x);
+           x = findPalindrome(s,i,i+1,x);
+       }
+        return x;
+    }
+    public String findPalindrome(String s,int left,int right,String max){
+        
+        while(left>=0&&right<s.length()&&s.charAt(left)==s.charAt(right)){
+            left--;
+            right++;
+        }
+        if(right-(left+1)>max.length()){
+            max = s.substring(left+1,right);
+        }
+        return max;
+    }
+}
+
 /**
 Given a string s, return the longest palindromic substring in s.
 
