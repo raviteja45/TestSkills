@@ -10,6 +10,22 @@ class Solution {
     }
 }
 
+Version 2:
+
+class Solution {
+    public int rob(int[] nums) {
+       int a = 0;
+       int b = 0;
+       for(int i=0;i<nums.length;i++){
+           int opt1 = a;
+           int opt2 = nums[i]+b;
+           int c = Math.max(opt1,opt2);
+           b = a;
+           a = c;
+       }
+        return a;
+    }
+}
 
 /**
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
