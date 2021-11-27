@@ -15,6 +15,28 @@ class Solution {
     }
 }
 
+Version 2:
+
+class Solution {
+    public int maxProfit(int l, int[] prices) {
+        if(l<=0){
+            return 0;
+        }
+       int[] min = new int[l];
+       int[] max = new int[l];
+        for(int i=0;i<l;i++){
+            min[i] = Integer.MAX_VALUE;
+            max[i] = 0;
+        }
+        for(int i=0;i<prices.length;i++){
+            for(int j=0;j<l;j++){
+                min[j] = Math.min(min[j],prices[i]-(j>0?max[j-1]:0));//Similar to best time to buy and sell III
+                max[j] = Math.max(max[j],prices[i]-min[j]);
+            }
+        }
+        return max[l-1];
+    }
+}
 
 /**
 You are given an integer array prices where prices[i] is the price of a given stock on the ith day, and an integer k.
