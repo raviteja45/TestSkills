@@ -25,6 +25,31 @@ class Solution {
     }
 }
 
+
+V2-----
+   
+class Solution {
+   public List<List<Integer>> combinationSum(int[] cands, int t) {
+       List<List<Integer>> result = new ArrayList<>();
+       backTracking(result,0,cands,t,new ArrayList<>());
+       return result;
+    }
+    public void backTracking(List<List<Integer>> result, int start, int[] cands, int target, List<Integer> temp){
+        if(target<0){
+            return;
+        }
+        if(target==0){
+            result.add(new ArrayList<>(temp));
+        }
+        for(int i=start;i<cands.length;i++){
+            temp.add(cands[i]);
+            backTracking(result,i,cands,target-cands[i],temp);
+            temp.remove(temp.size()-1);
+        }
+        
+    }
+}
+
 /**
 39. Combination Sum
 Medium
