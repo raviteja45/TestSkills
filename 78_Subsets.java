@@ -15,7 +15,23 @@ class Solution {
     }
 }
 
-
+----- V2 version -----
+    
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backTracking(result,nums,new ArrayList<>(),0);
+        return result;
+    }
+    public void backTracking(List<List<Integer>> result, int[] nums, List<Integer> temp,int index){
+        result.add(new ArrayList<>(temp));
+        for(int i=index;i<nums.length;i++){
+            temp.add(nums[i]);
+            backTracking(result,nums,temp,i+1);
+            temp.remove(temp.size()-1);
+        }
+    }
+}
 /**
 Given an integer array nums of unique elements, return all possible subsets (the power set).
 
