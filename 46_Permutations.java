@@ -19,6 +19,30 @@ class Solution {
     }
 }
 
+---- V2 Version ------
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        backTracking(nums,result,new ArrayList<>());
+        return result;
+    }
+    
+    public void backTracking(int[]nums,List<List<Integer>> result,List<Integer> temp){
+        if(temp.size()==nums.length){
+            result.add(new ArrayList<>(temp));
+        }else{
+            for(int i=0;i<nums.length;i++){
+                if(temp.contains(nums[i]))
+                    continue;
+            temp.add(nums[i]);
+            backTracking(nums,result,temp);
+            temp.remove(temp.size()-1);
+        }
+        }       
+    }
+}
 
 /**
 Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
