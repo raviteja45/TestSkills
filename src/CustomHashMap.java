@@ -2,25 +2,23 @@ package com.home.hashing;
 
 public class Custom {
 
-	Node[] all = new Node[10];
-	
-	
+	Node_customHashMap[] all = new Node_customHashMap[10];
 	public void put(int key,int val) {
 		
 		int keyValue = generateKey(key);
 		if(all.length>keyValue) {
 			if(all[keyValue]!=null) {
-				Node n = all[keyValue];
+				Node_customHashMap n = all[keyValue];
 				while(n.getNext()!=null) {
 					n = n.getNext();
 				}
-				Node n1 = new Node();
+				Node_customHashMap n1 = new Node_customHashMap();
 				n1.setKey(key);
 				n1.setValue(val);
 				n.setNext(n1);
 			}
 			else {
-				Node n = new Node();
+				Node_customHashMap n = new Node_customHashMap();
 				n.setKey(key);
 				n.setValue(val);
 				all[keyValue] = n;
@@ -31,7 +29,7 @@ public class Custom {
 	public void get(int key) {
 		int keyValue = generateKey(key);
 		if(all[keyValue]!=null) {
-			Node n = all[keyValue];
+			Node_customHashMap n = all[keyValue];
 			while(n.getKey()!=key) {
 				n = n.getNext();
 			}
