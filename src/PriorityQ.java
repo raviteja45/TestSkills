@@ -8,6 +8,7 @@ public class PriorityQ {
 	public static void main(String[] args) {
 		//Queue<Bean> q = new PriorityQueue<>((t1,t2)->t2.getName().compareTo(t1.getName())); //[Bean [name=Zpp, sal=500], Bean [name=Best, sal=5000], Bean [name=Test, sal=3000]]
 		Queue<BeanPriorityQ> q = new PriorityQueue<>((t1,t2)->t1.getName().compareTo(t2.getName())); //[Bean [name=Best, sal=5000], Bean [name=Test, sal=3000], Bean [name=Zpp, sal=500]]
+		//Queue<String> qString = new PriorityQueue<>(Comparator.reverseOrder()); // For Strings, reverse order.
 		BeanPriorityQ b1 = new BeanPriorityQ();
 		b1.setName("Test");
 		b1.setSal(3000);
