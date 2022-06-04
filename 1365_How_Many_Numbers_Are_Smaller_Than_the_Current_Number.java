@@ -20,6 +20,28 @@ class Solution {
     }
 }
 
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] temp = new int[nums.length];
+        Map<Integer,Integer> map = new HashMap<>();
+        int[] result = new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            temp[i] = nums[i];
+        }
+        Arrays.sort(temp);
+        for(int i=0;i<temp.length;i++){
+            if(!map.containsKey(temp[i])){
+                map.put(temp[i],i);
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            result[i] = map.get(nums[i]);
+        }
+        return result;
+    }
+}
+
 /**
 Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].
 
