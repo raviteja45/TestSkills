@@ -9,6 +9,20 @@ class Solution {
     }
 }
 
+
+class Solution {
+    public int twoEggDrop(int n) {
+        int dp = 0;
+        for(int i=1;i<=n;i++){
+            dp = dp+i;
+            if(dp>=n){
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+
 /**
 You are given two identical eggs and you have access to a building with n floors labeled from 1 to n.
 
