@@ -11,7 +11,7 @@ class Solution {
         return dp[amount]==amount+1?-1:dp[amount];
     }
 } // numbers - 1,2,5 . total - 11
-    0  1  2. 3. 4. 5. 6. 7. 8. 9. 10. 11 ( amount)
+           0  1  2. 3. 4. 5. 6. 7. 8. 9. 10. 11 ( amount)
   
 (coins)1   0  1  2. 3. 4. 5. 6. 7. 8. 9. 10. 11 - (dp array after 1st iteration)
     
