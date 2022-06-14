@@ -11,6 +11,33 @@ class Solution {
     }
 }
 
+------ v2 ------- giving time out error---- using backtracking
+
+class Solution {
+    int max = 0;
+    public int change(int amount, int[] coins) {
+    //List<List<Integer>> result = new ArrayList<>();
+       Arrays.sort(coins);
+       backTracking(coins,amount,new ArrayList<>(),0);
+        //System.out.println(result);
+       return max;
+    }
+    
+    public void backTracking(int[] cands, int target, List<Integer> temp, int index){
+        if(target<0){
+            return;
+        }
+        if(target==0){
+            //result.add(new ArrayList<>(temp));
+            max++;
+        }
+        for(int i=index;i<cands.length;i++){
+            temp.add(cands[i]);
+            backTracking(cands,target-cands[i],temp,i);
+            temp.remove(temp.size()-1);
+        }
+    }
+}
 
 /**
 You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
