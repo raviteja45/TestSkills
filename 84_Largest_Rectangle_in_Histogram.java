@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // Similar to trapping rain water
     public int largestRectangleArea(int[] heights) {
        Stack<Integer> stack = new Stack<>();
        int max = 0;
