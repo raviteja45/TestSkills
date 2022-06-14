@@ -10,7 +10,7 @@ class Solution { // Same as histogram rectangle
                     break;
                 }
                 int bredth  = i-stack.peek()-1;//right-left-1
-                int water_filled = bredth*(Math.min(height[stack.peek()],current)-height1); // min (left, right)
+                int water_filled = bredth*(Math.min(height[stack.peek()],current)-height1); // min (left, right). height1 is the height of the in-between block.
                 maxWater = maxWater+water_filled;
             }
             stack.push(i);
@@ -18,3 +18,5 @@ class Solution { // Same as histogram rectangle
         return maxWater;
     }
 }
+
+https://www.youtube.com/watch?v=EdR3V5DBgyo&ab_channel=AlgorithmsMadeEasy
