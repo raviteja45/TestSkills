@@ -3,7 +3,7 @@ class Solution {
         List<String> res = new ArrayList<>();
         String max="";
 		  for(int i=0;i<str.length();i++){
-             max =  findPalindrome(i,i,res,str,max);
+             max =  findPalindrome(i,i,res,str,max); 
               max = findPalindrome(i,i+1,res,str,max);
           }
         return max;
@@ -56,8 +56,8 @@ class Solution {
     public String longestPalindrome(String s) {
         String x="";
        for(int i=0;i<s.length();i++){
-           x = findPalindrome(s,i,i,x);
-           x = findPalindrome(s,i,i+1,x);
+           x = findPalindrome(s,i,i,x); // scenario for 'racecar' where middle element is single
+           x = findPalindrome(s,i,i+1,x);//scenario for 'aaabbaaa' where there is no single middle element
        }
         return x;
     }
