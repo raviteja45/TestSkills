@@ -8,7 +8,8 @@ class Solution {
             map.put(s.charAt(right),map.getOrDefault(s.charAt(right),0)+1);
             max_count = Math.max(max_count,map.get(s.charAt(right)));
             if(right-left+1-max_count>k){ // Here we are cheking if there are more characters that needs to be replaced than K, 
-                                          //if yes, then we have to remove from left (sliding window)
+                                          //if yes, then we have to remove from left (sliding window). right-left+1 is current window size. 
+                                          //max_count is count of same characters.
                 map.put(s.charAt(left),map.get(s.charAt(left))-1);
                 left++;
             }
