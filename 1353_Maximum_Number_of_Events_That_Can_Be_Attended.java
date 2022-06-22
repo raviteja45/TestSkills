@@ -1,6 +1,6 @@
 class Solution {
     public int maxEvents(int[][] events) {
-        Arrays.sort(events,(a,b)->Integer.compare(a[0],b[0]));//priority Queue by events expiry (end time)
+        Arrays.sort(events,(a,b)->Integer.compare(a[0],b[0]));// Here we are starting basing on the starting times, ascending order.
         Queue<Integer> pq = new PriorityQueue<>();
         int i=0;
         int n = events.length;
@@ -13,7 +13,7 @@ class Solution {
             }
             //add all the events happening on day d
             while(i<n&&events[i][0]==d){
-                pq.add(events[i][1]);
+                pq.add(events[i][1]);//priority Queue by events expiry (end time). Here we are adding end times.
                 i++;
             }
             //attend event which expires first
