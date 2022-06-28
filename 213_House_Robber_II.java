@@ -13,7 +13,9 @@ class Solution {
         int rob1 = 0;
         int rob2 = 0;
         for(int i=start;i<=end;i++){
-            int temp = Math.max(rob1+nums[i],rob2);
+            int temp = Math.max(rob1+nums[i],rob2);// rob1, rob2, nums[start],nums[start+1] .. etc. Here we cant rob two houeses adjecent, so either it could be 
+                                                   // rob1+nums[start] or rob2 (max between both). Next we should check rob2+nums[i+1] etc, so we are assigning
+                                                   // the value of rob2 to rob1
             rob1 = rob2;
             rob2 = temp;
         }
