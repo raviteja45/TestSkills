@@ -2,10 +2,11 @@ class Solution {
     public boolean canJump(int[] nums) {
         int reach = 0;
         for(int i=0;i<nums.length;i++){
-            if(reach<i){
+            if(reach<i){ // 2. If i is crossing the total reach, we are still in back and its failed.
                 return false;
             }
-            reach = Math.max(reach,nums[i]+i);
+            int curr = nums[i]+i; // 1. Current index+ nums[i] gives total jump
+            reach = Math.max(reach,curr);
         }
         return true;
     }
