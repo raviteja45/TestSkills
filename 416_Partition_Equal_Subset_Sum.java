@@ -74,8 +74,8 @@ class Solution {
         }
         
         for(int i=1;i<=nums.length;i++){
-            for(int j=1;j<=sum;j++){
-                dp[i][j] = dp[i-1][j];
+            for(int j=0;j<=sum;j++){
+                dp[i][j] = dp[i-1][j]; // Taking from previous row, same column
                 if(j>=nums[i-1]){
                     dp[i][j] = dp[i][j]||dp[i-1][j-nums[i-1]];
  //we CANNOT reuse an element while it can be reused in Coin change-2. That is why we have dp[i-1][j-nums[i-1]] in this problem and dp[i][j-coins[i-1]] in LT518
