@@ -20,6 +20,37 @@ class Solution {
        5   0. 1. 1. 2. 2. 1. 2. 2. 3. 3. 2.  3(answer) - Iterations are on same array, its not 2D array
 
 
+------------------------------ V2 version ---------------------------------------
+               
+class Solution {
+    public int coinChange(int[] coins, int amount) { // Similar to Partition Equal subset sum
+                                                     // Coin change 2
+        if(amount<=0){
+            return 0;
+        }
+        int[][] dp = new int[coins.length+1][amount+1];
+        for(int i=0;i<=coins.length;i++){
+            for(int j=0;j<=amount;j++){
+                dp[i][j] = amount+1;
+            }
+            
+        }
+        for(int i=0;i<coins.length;i++){
+            dp[i][0] = 0;
+        }
+        for(int i=1;i<=coins.length;i++){
+            for(int j=0;j<=amount;j++){
+                dp[i][j] = dp[i-1][j];
+                if(j>=coins[i-1]){
+                        dp[i][j] = Math.min(dp[i][j],dp[i][j-coins[i-1]]+1);
+                    
+                }
+            }
+        }
+        return dp[coins.length][amount]==amount+1?-1:dp[coins.length][amount];
+    }
+}
+
 /**
 You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
 
