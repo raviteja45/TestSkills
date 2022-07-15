@@ -56,7 +56,7 @@ class Solution {
 ---------------------------------------v2 version ----------------------------------------------
     
     class Solution {
-    public boolean canPartition(int[] nums) { // Its similar to coin change 1 and 2
+    public boolean canPartition(int[] nums) { // Its similar to coin change 1 and 2. It uses knapsack problem.
         int sum = 0;
         for(int num:nums){
             sum= sum+num;
