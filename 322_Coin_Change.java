@@ -24,7 +24,7 @@ class Solution {
                
 class Solution {
     public int coinChange(int[] coins, int amount) { // Similar to Partition Equal subset sum
-                                                     // Coin change 2
+                                                     // Coin change 2. It uses Knapsack problem
         if(amount<=0){
             return 0;
         }
