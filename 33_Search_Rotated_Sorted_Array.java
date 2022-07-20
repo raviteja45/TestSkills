@@ -31,26 +31,26 @@ class Solution {
 
 class Solution {
     public int search(int[] nums, int target) {
-       int low = 0;
-       int high = nums.length-1;
-       while(low<=high){
-           int mid = low+(high-low)/2;
-           if(nums[mid]==target){
-               return mid;
-           }else if(nums[low]<=nums[mid]){
-               if(nums[low]<=target&&target<nums[mid]){
-                   high = mid-1;
-               }else{
-                   low = mid+1;
-               }
-           }else if(nums[mid]<=nums[high]){
-               if(nums[mid]<=target&&target<=nums[high]){
-                   low = mid+1;
-               }else{
-                   high = mid-1;
-               }
-           }
-       }
+      int low = 0;
+      int high = nums.length-1;
+      while(low<=high){
+          int mid = low+(high-low)/2;
+          if(nums[mid]==target){
+              return mid;
+          }else if(nums[low]<=nums[mid]){ // Starting from low until MID, check if sub array //sorted.
+              if(target>=nums[low]&&target<nums[mid]){//If above sorted, check if the target is //in between low and mid. 
+                  high = mid-1;// If target is in between low and mid, move high to mid-1;
+              }else{
+                  low = mid+1; // if target is not in first sub array range, move low to mid+1, //which is we are going to search in next half starting from mid.
+              }
+          } else if(nums[mid]<=nums[high]){ // checking the next half of the array.
+              if(target>=nums[mid]&&target<=nums[high]){ // target should be between mid,high. 
+                  low = mid+1;//if target is between mid,high then search between mid and high. //make low is mid+1;
+              }else{
+                  high = mid-1;
+              }
+          }
+      }
         return -1;
     }
 }
