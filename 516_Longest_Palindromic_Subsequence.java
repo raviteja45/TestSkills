@@ -1,5 +1,5 @@
 class Solution {
-    public int longestPalindromeSubseq(String s) {
+    public int longestPalindromeSubseq(String s) { // Its similar to 1143. Longest Common Subsequence
         int n = s.length();
         int[][] dp = new int[n+1][n+1];
         String rev = "";
