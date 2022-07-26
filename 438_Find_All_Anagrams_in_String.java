@@ -17,6 +17,41 @@ class Solution {
     }
 }
 
+-----------------------------v2 -------------------------------
+    
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) { //76. Minimum Window Substring
+        Map<Character,Integer> map = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<p.length();i++){
+          map.put(p.charAt(i),map.getOrDefault(p.charAt(i),0)+1);  
+        }
+        int matched = 0;
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)-1);
+                if(map.get(c)==0){
+                    matched++;
+                }
+            }
+            if(i>=p.length()){
+               char c1 = s.charAt(i-p.length());
+                if(map.containsKey(c1)){
+                    map.put(c1,map.get(c1)+1);
+                    if(map.get(c1)==1){
+                        matched--;
+                    }
+                }
+            }
+            if(matched==map.size()){
+                res.add(i-p.length()+1);
+            }
+        }
+        return res;
+    }
+}
+
 
 /**
 Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
