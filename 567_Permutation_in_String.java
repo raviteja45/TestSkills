@@ -1,5 +1,5 @@
 class Solution {
-    public boolean checkInclusion(String s1, String s2) {
+    public boolean checkInclusion(String s1, String s2) {// Same as Find all anagrams
         Map<Character,Integer> map = new HashMap<>();
         for(char c:s1.toCharArray()){
             map.put(c,map.getOrDefault(c,0)+1);
