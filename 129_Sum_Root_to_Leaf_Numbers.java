@@ -32,6 +32,38 @@ class Solution {
     }
 }
 
+----------------------------v2--------------------------------
+    
+class Solution {
+    int total = 0;
+    public int sumNumbers(TreeNode root) {
+        iterativePreOrder(root);
+        return total;
+    }
+    
+    public void iterativePreOrder(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        Stack<Integer> valStack = new Stack<>();
+        valStack.push(root.val);
+        while(!stack.isEmpty()){
+            TreeNode temp = stack.pop();
+            int curr = valStack.pop();
+            if(temp.right==null&&temp.left==null){
+                total = total+curr;
+            }
+            
+            if(temp.right!=null){
+                stack.push(temp.right);
+                valStack.push(curr*10+temp.right.val);
+            }
+            if(temp.left!=null){
+                stack.push(temp.left);
+                valStack.push(curr*10+temp.left.val);
+            }
+        }
+    }
+}
 
 /**
 You are given the root of a binary tree containing digits from 0 to 9 only.
