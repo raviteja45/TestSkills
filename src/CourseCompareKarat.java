@@ -31,7 +31,6 @@ public class Karat {
 		List<String> temp = new ArrayList<>();
 		Map<String,Set<String>> map = new HashMap<>();
 		for(int i=0;i<input.length;i++) {
-			for(int j=0;j<input[0].length;j++) {
 				if(map.containsKey(input[i][0])) {
 					Set<String> set = map.get(input[i][0]);
 					set.add(input[i][1]);
@@ -41,7 +40,6 @@ public class Karat {
 				  set.add(input[i][1]);
 					map.put(input[i][0], set);
 				}
-			}
 		}
 		for(Map.Entry<String, Set<String>> map1: map.entrySet()) {
 			for(Map.Entry<String, Set<String>> map2: map.entrySet()) {
