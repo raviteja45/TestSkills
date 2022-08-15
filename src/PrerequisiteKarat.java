@@ -3,9 +3,7 @@ public String courseScheduling(String[][] input) {
 		String start = null;
 		Map<String,String> map = new HashMap<>();
 		for(int i=0;i<input.length;i++) {
-			for(int j=0;j<input[0].length;j++) {
 				map.put(input[i][0], input[i][1]);
-			}
 		}
 		List<String> list = new ArrayList<>();
 		List<String> outputList = new ArrayList<>();
