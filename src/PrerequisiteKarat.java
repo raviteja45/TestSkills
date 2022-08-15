@@ -38,6 +38,12 @@ String[][] input1= {
 System.out.println(k.courseScheduling(input1));
 
 /**
+You're developing a system for scheduling advising meetings with students in a Computer Science program. Each meeting should be scheduled when a student has completed 50% of their academic program.
+
+Each course at our university has at most one prerequisite that must be taken first. No two courses share a prerequisite. There is only one path through the program.
+
+Write a function that takes a list of (prerequisite, course) pairs, and returns the name of the course that the student will be taking when they are halfway through their program. (If a track has an even number of courses, and therefore has two "middle" courses, you should return the first one.)
+
 Sample input 1: (arbitrarily ordered)
 pairs1 = [
 ["Foundations of Computer Science", "Operating Systems"],
