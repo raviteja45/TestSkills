@@ -1,7 +1,7 @@
  public List<String> continuousArray(String[] user1, String[] user2){
     	List<String> res = new ArrayList<>();
     	int maxLength = 0;
-    	int start = 0;
+    	int end = 0;
     	int[][] dp = new int[user1.length+1][user2.length+1];
     	for(int i=1;i<user1.length+1;i++) {
     		for(int j=1;j<user2.length+1;j++) {
@@ -10,12 +10,12 @@
     			}
     			if(dp[i][j]>maxLength) {
     				maxLength = dp[i][j];
-    				start = i-1;
+    				end = i-1;
     			}
     		}
     	}
-    	System.out.println("Max "+maxLength+" start "+start);
-    	for(int i=start-maxLength+1;i<start+1;i++) {
+    	System.out.println("Max "+maxLength+" start "+end);
+    	for(int i=end-maxLength+1;i<end+1;i++) {
     		res.add(user1[i]);
     	}
     	return res;
