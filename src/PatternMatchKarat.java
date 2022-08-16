@@ -22,4 +22,22 @@ String pattern = "rdatlbohe"
 
 Answer - cat
 Answer - breath
+
+words = ["baby", "referee", "cat", "dada", "dog", "bird", "ax"]
+String string1 = "ctay";
+String string2 = "bcanihjsrrrferet";
+String string3 = "tbaykkjlga";
+String string4 = "bbbblkkjbaby";
+String string5 = "dad";
+String string6 = "breadmaking";
+
+string1 = "ctay"
+find(words, string1) => "cat" (the letters do not have to be in order)
+
+string2 = "bcanihjsrrrferet"
+find(words, string2) => "cat" (the letters do not have to be together)
+
+string3 = "tbaykkjlga"
+find(words, string3) => "-" (the letters cannot be reused)
+
 */
