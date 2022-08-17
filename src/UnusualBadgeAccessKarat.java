@@ -1,39 +1,45 @@
-public List<List<String>> unusualBadgeAccess(String[][] input){
+ public List<List<String>> unusualBadgeAccess(String[][] input){
     	List<List<String>> res = new ArrayList<>();
-    	Map<String,List<String>> map = new HashMap<>();
+    	Map<String,List<Integer>> map = new HashMap<>();
     	for(int i=0;i<input.length;i++) {
     		if(map.containsKey(input[i][0])) {
-    			List<String> li = map.get(input[i][0]);
-    			li.add(input[i][1]);
+    			List<Integer> li = map.get(input[i][0]);
+    			li.add(Integer.parseInt( input[i][1]));
     			map.replace(input[i][0], li);
     		}else {
-    			List<String> li = new ArrayList<>();
-    			li.add(input[i][1]);
+    			List<Integer> li = new ArrayList<>();
+    			li.add(Integer.parseInt( input[i][1]));
     			map.put(input[i][0], li);
     		}
     	}
     	
-    	for(Map.Entry<String, List<String>> map1: map.entrySet()) {
-    		List<String> list = map1.getValue();
-    		Collections.sort(list,(a,b)->Integer.valueOf(a)-Integer.valueOf(b));
-    		for(int i =2;i<list.size();i++){
-                int c = Integer.valueOf(list.get(i));
-                int p = Integer.valueOf(list.get(i-2));
-                if(c-p<=100){
-                    List<String> res1 = new ArrayList<String>();
-                    res1.add(map1.getKey());
-                    for(int j=i-2;j<list.size(); j++) {
-                        int k = Integer.valueOf(list.get(j));
-                        if(k-p<=100) {
-                            res1.add(list.get(j));
-                        } else {
-                            break;
-                        }
-                    }
-                    res.add(res1);
-                    break;
-                }
-            }
+    	for(Map.Entry<String, List<Integer>> map1: map.entrySet()) {
+    		List<Integer> list = map1.getValue();
+    		Collections.sort(list,(a,b)->a-b);
+    		for(int i =1;i<list.size();i++){
+    			int hr = list.get(i)-list.get(0);
+    			if(hr<0||hr>100) {
+    				if(i>=3) {
+    					list.remove(i);
+    					i--;
+    				}else {
+    					list.remove(0);
+    					i=1;
+    				}
+    			}
+    		}
+    		map.put(map1.getKey(), list);
+    	}
+    	
+    	for(Map.Entry<String, List<Integer>> temp: map.entrySet()) {
+    		if(temp.getValue().size()>2) {
+    			List<String> temp1 = new ArrayList<>();
+    			temp1.add(temp.getKey());
+    			for(int x:temp.getValue()) {
+    				temp1.add(String.valueOf(x));
+    			}
+    			res.add(temp1);
+    		}
     	}
     	return res;
     }
