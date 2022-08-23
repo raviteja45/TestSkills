@@ -81,3 +81,50 @@ user_4:[58522,58522]
 user_8:[100,100]
 
 */
+
+
+public String maxResoruceIn5Min(String[][] input) {
+		Map<String,List<Integer>> map = new HashMap<>();
+		int max = 0;
+		String resource = null;
+		for(int i=0;i<input.length;i++) {
+			if(map.containsKey(input[i][2])) {
+				List<Integer> li = map.get(input[i][2]);
+				li.add(Integer.parseInt(input[i][0]));
+				map.replace(input[i][2], li);
+			}else {
+				List<Integer> li = new ArrayList<>();
+				li.add(Integer.parseInt(input[i][0]));
+				map.put(input[i][2], li);
+			}
+		}
+		
+		for(Map.Entry<String,List<Integer>> temp:map.entrySet()) {
+			List<Integer> l = temp.getValue();
+			Collections.sort(l);
+			 int i=1, j=0, len = 0;
+	            while(i < l.size()) {
+	                if(l.get(i) - l.get(j) <= 300) {
+	                    len = Math.max(len, i - j + 1);
+	                    i++;
+	                }
+	                else {
+	                    while(j<i && l.get(i) - l.get(j) > 300) {
+	                    	j++;
+	                    }
+	                }
+	            }
+	            if(max<len) {
+	            	max = len;
+	            	resource = temp.getKey();
+	            }
+		}
+		
+		return resource+","+max;
+	}
+
+/**
+Question 2 - Write a function that takes the logs and returns the resource with the highest number of accesses in any 5 minute window, together with how many accesses it saw.
+Expected Output:Expected Output:
+most_requested_resource(logs1) # => ('resource_3', 3)most_requested_resource(logs1) # => ('resource_3', 3)
+*/
