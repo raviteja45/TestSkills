@@ -2,8 +2,8 @@ class Solution {
     public int countOrders(int n) {
         long res = 1;
         for(int i=1;i<=n;i++){
-            res = res*i;
-            res = res*(2*i-1);
+            res = res*i; // All the pickups can be formed in any way, so its a simple permutation. If there are n items, its n!.
+            res = res*(2*i-1); // All the delivery should be in the right format (p1 should be before d1 etc). So, its 2n-1.
             res = res%1000000007;
         }
         return (int)res;
