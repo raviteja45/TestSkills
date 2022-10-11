@@ -26,6 +26,41 @@ class Solution {
     }
 }
 
+----------------------v2 version (above failing some test cases)---------------------------------
+    
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        Set<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> res = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                int low = j+1;
+                int high = nums.length-1;
+                while(low<high){
+long num = Long.valueOf(nums[i])+Long.valueOf(nums[j])+ Long.valueOf(nums[low])+ Long.valueOf(nums[high]);
+                    if(num==target){
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        temp.add(nums[low]);
+                        temp.add(nums[high]);
+                        set.add(temp);
+                        low++;
+                        high--;
+                    }else if(num<target){
+                        low++;
+                    }else{
+                        high--;
+                    }
+                }
+            }
+        }
+        
+        res.addAll(set);
+        return res;
+    }
+}
 /**
 Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
 
