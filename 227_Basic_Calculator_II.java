@@ -77,6 +77,77 @@ class Solution {
     }
 }
 
+-----------------------------------V3-------------------------------------------------------------
+ //Applicable for all characters.
+     
+class Solution {
+    public int calculate(String s) {
+        Stack<Integer> stack = new Stack<>();
+        Stack<Pair> stackP = new Stack<>();
+        char sign = '+';
+        int res = 0;
+        for(int i=0;i<s.length();i++){
+            if(Character.isDigit(s.charAt(i))){
+                int num = 0;
+                while(i<s.length()&&Character.isDigit(s.charAt(i))){
+                    num = 10*num+(s.charAt(i)-'0');
+                    i++;
+                }
+                i--;
+                cal(stack,num,sign);
+            } else if(s.charAt(i)=='('){
+                stackP.push(new Pair(stack,sign));
+                sign = '+';
+                stack = new Stack<>();
+            } else if(s.charAt(i)==')'){
+                int num = 0;
+                while(!stack.isEmpty()){
+                    num = num+stack.pop();
+                }
+                Pair p1 = stackP.pop();
+                stack = p1.st;
+                sign = p1.sign;
+                cal(stack,num,sign);
+            }
+            else if(s.charAt(i)!=' '){
+                sign = s.charAt(i);
+            }
+        }
+        while(!stack.isEmpty()){
+            res = res+stack.pop();
+        }
+        return res;
+    }
+    
+    public void cal(Stack<Integer> stack, int num, char sign){ // Applicable for all signs including (, ).
+        if(sign=='+'){
+                    stack.push(num);
+                }
+               else if(sign=='-'){
+                    stack.push(-num);
+                }
+                else if(sign=='*'){
+                    int temp = stack.pop();
+                    temp = temp*num;
+                    stack.push(temp);
+                }
+                else if(sign=='/'){
+                    int temp = stack.pop();
+                    temp = temp/num;
+                    stack.push(temp);
+                }
+    }
+}
+
+class Pair{
+    Stack<Integer> st;
+    char sign;
+    Pair(Stack<Integer> stack, char ch){
+        st = stack;
+        sign = ch;
+    }
+}
+
 
 /**
 Given a string s which represents an expression, evaluate this expression and return its value. 
