@@ -35,6 +35,47 @@ public int calculate(String s) {
 }
 }
 
+-----------------------------V2------------------------------------------
+    
+class Solution {
+    public int calculate(String s) {
+        Stack<Integer> stack = new Stack<>();
+        char sign = '+';
+        int res = 0;
+        for(int i=0;i<s.length();i++){
+            if(Character.isDigit(s.charAt(i))){
+                int num = 0;
+                while(i<s.length()&&Character.isDigit(s.charAt(i))){
+                    num = 10*num+(s.charAt(i)-'0');
+                    i++;
+                }
+                i--; // After coming out of the loop, we are missing the current one, so reducing the value of "i".
+                if(sign=='+'){
+                    stack.push(num);
+                }
+               else if(sign=='-'){
+                    stack.push(-num);
+                }
+                else if(sign=='*'){
+                    int temp = stack.pop();
+                    temp = temp*num;
+                    stack.push(temp);
+                }
+                else if(sign=='/'){
+                    int temp = stack.pop();
+                    temp = temp/num;
+                    stack.push(temp);
+                }
+            }else if(s.charAt(i)!=' '){
+                sign = s.charAt(i);
+            }
+        }
+        while(!stack.isEmpty()){
+            res = res+stack.pop();
+        }
+        return res;
+    }
+}
 
 
 /**
