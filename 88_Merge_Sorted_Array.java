@@ -17,6 +17,23 @@ class Solution {
 //https://www.youtube.com/watch?v=C4oBXLr3zos&ab_channel=AlgorithmsMadeEasy
 // 1 2 3 0 0 0 , m is length of non-zero, n is length of nums2 and zeros in nums1
 // Here i is total length. We are comparing from last elements of both arrays. 
+
+---------------------------V2------------------------------------------------
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+       Queue<Integer> q = new PriorityQueue<>();
+       for(int i=0;i<m;i++){
+               q.add(nums1[i]);
+       }
+       for(int i=0;i<n;i++){
+           q.add(nums2[i]);
+       }
+       for(int i=0;i<m+n;i++){
+           nums1[i] = q.poll();
+       }
+    }
+}
  
 /**
 You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
