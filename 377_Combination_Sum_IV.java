@@ -13,6 +13,25 @@ class Solution {
     }
 }
 
+TLE:
+
+class Solution {
+    int res = 0;
+    public int combinationSum4(int[] nums, int target) {
+       backTracking(nums,target,0);
+       return res;
+    }
+    public void backTracking(int[] nums,int target,int temp){
+        if(temp==target){
+            res++;
+        }else if(temp<target){
+            for(int i=0;i<nums.length;i++){
+                backTracking(nums,target,temp+nums[i]);
+            }
+        }
+    }
+}
+
 /**
 Given an array of distinct integers nums and a target integer target, return the number of possible combinations that add up to target.
 
