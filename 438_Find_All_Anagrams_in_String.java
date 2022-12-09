@@ -29,13 +29,15 @@ class Solution {
         int matched = 0;
         for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
-            if(map.containsKey(c)){
+            
+            if(map.containsKey(c)){ // Checking the presence of the character
                 map.put(c,map.get(c)-1);
                 if(map.get(c)==0){
                     matched++;
                 }
             }
-            if(i>=p.length()){
+            
+            if(i>=p.length()){ // Checking the presence of the character in the window
                char c1 = s.charAt(i-p.length());
                 if(map.containsKey(c1)){
                     map.put(c1,map.get(c1)+1);
