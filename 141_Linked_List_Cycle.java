@@ -18,6 +18,25 @@ public class Solution {
     }
 }
 
+------------------------V2--------------------------------------
+    
+public class Solution { // Similar to LinkedList cycle II
+    public boolean hasCycle(ListNode head) {
+        if(head==null){
+            return false;
+        }
+        ListNode fast = head;
+        ListNode slow  = head;
+        while(fast!=null&&fast.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
+}
 
 /**
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
