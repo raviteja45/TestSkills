@@ -7,6 +7,9 @@ class Solution {
                 matrix[j][i] = temp;
             }
         }
+        //[1 4 7]
+        //[2 5 8]
+        //[3 6 9]
         
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length/2;j++){
