@@ -21,6 +21,12 @@ class Solution {
     }
 }
 
+// MCMXCIV - Take from Last, 1<5 = 4
+//                             100>1 = 100+4
+//                             10<100 = 104-10 = 94
+//                             1000>10 = 94+1000 = 1094
+//                             100<1000 = 1094-100 = 994
+//                             1000>100 = 994+1000 = 1994 - result
 
 /**
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
